@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+const port = process.env.PORT || 5000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 const app = express();
@@ -88,5 +90,6 @@ app.get("/", (req, res) => {
   res.send("Task Manager Server Running");
 });
 
-// ❗ IMPORTANT FOR VERCEL
-module.exports = app;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
